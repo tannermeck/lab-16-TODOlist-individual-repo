@@ -1,4 +1,4 @@
-import { isValidPassword, userNameExists } from '../utils/login-utils.js';
+import { isValidPassword } from '../utils/login-utils.js';
 import { getUsers } from '../utils/storage-utils.js';
 
 
@@ -11,7 +11,7 @@ userForm.addEventListener('submit', (e) => {
     const name = signInData.get('name');
     const password = signInData.get('pwd');
     const users = getUsers();
-    if (isValidPassword(name, password, users) && userNameExists(users, name)){
+    if (isValidPassword(name, password, users)) {
         window.location.replace('../list/index.html');
     } else {
         alert('wrong username or password');

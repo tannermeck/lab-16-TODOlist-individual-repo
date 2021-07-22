@@ -1,4 +1,3 @@
-import { getUsers } from './storage-utils.js';
 
 export function userNameExists(users, name) {
     let matches = users.filter(user => user.name === name);
