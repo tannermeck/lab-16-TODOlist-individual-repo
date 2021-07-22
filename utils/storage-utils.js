@@ -1,9 +1,9 @@
 export const USERS = 'USERS';
 
-export function setUser(userObject) {
+export function setUsers(userObject) {
     localStorage.setItem(USERS, JSON.stringify(userObject));
 }
 
 export function getUsers() {
-    return JSON.parse(localStorage.getItem(USERS));
+    return JSON.parse(localStorage.getItem(USERS) || '[]');
 }
