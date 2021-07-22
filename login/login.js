@@ -1,7 +1,14 @@
-// const userNameInput = document.getElementById('user');
-// const passwordInput = document.getElementById('pwd');
-// const userForm = document.getElementById('userForm');
+
+
+const userForm = document.getElementById('userForm');
 const createAcct = document.getElementById('createAcct');
+
+userForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const signInData = new FormData(userForm);
+    const name = signInData.get('name');
+    const password = signInData.get('pwd');
+});
 
 createAcct.addEventListener('click', (e) => {
     e.preventDefault();
