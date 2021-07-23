@@ -12,7 +12,7 @@ userForm.addEventListener('submit', (e) => {
     const password = signInData.get('pwd');
     const users = getUsers();
     if (isValidPassword(name, password, users)) {
-        window.location.replace('../list/index.html');
+        window.location.replace(`../list/index.html?name=${name}`);
     } else {
         alert('wrong username or password');
     }
