@@ -6,10 +6,29 @@ const submitNewNote = document.getElementById('submitNewNote');
 const searchParams = new URLSearchParams(window.location.search);
 const ul = document.getElementById('toDo');
 const users = getUsers();
+let user = findByName(users, (searchParams.get('name')));
+let listItem = user.todos;
+for (let item of listItem){
+    const li = document.createElement('li');
+    li.textContent = item.name;
+    const button = document.createElement('button');
+    button.textContent = 'clear items';
+    button.addEventListener('click', () => {
+        li.classList.add('line');
+        if (li.innerHTML === item.name){
+            item.completed = true;
+            button.disabled = true;
+        } else {
+            return item.completed = false;
+        } 
+        setUsers(users);
+    }
+    );
+    ul.append(li, button);
+}
 
 submitNewNote.addEventListener('click', () =>{
     updateToDos(users, newNote.value);
-    
     renderItems(users);
 });
 
@@ -24,23 +43,23 @@ function updateToDos(users, newNote) {
 function renderItems(users){
     let user = findByName(users, (searchParams.get('name')));
     let listItem = user.todos;
-    console.log();
     const button = document.createElement('button');
     button.textContent = 'clear items';
-    button.classList.add('btn');
     const span = document.createElement('li');
     for (let item of listItem){
         span.textContent = item.name;
-    }
-    button.addEventListener('click', () => {
-        span.classList.add('line');
-        // updateCompleted(listItem.name);
-        
-    });
-    ul.append(button, span);
+        button.addEventListener('click', () => {
+            span.classList.add('line');
+            if (span.innerHTML === item.name){
+                item.completed = true;
+                button.disabled = true;
+            } else {
+                return item.completed = false;
+            } 
+            setUsers(users);
+        }
+        );
+        ul.append(button, span);
+    }    
 }
 
-// function updateCompleted(name){ 
-//     let user = findByName(users, (searchParams.get('name')));
-//     findByName(user, name);
-// }

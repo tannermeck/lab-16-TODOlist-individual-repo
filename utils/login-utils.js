@@ -2,9 +2,9 @@
 export function userNameExists(users, name) {
     let matches = users.filter(user => user.name === name);
     if (matches.length === 0) {
-        return false;
-    } else {
         return true;
+    } else {
+        return false;
     }
 }
 

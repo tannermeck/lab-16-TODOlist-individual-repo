@@ -13,7 +13,7 @@ userForm.addEventListener('submit', (e) => {
     const name = signInData.get('name');
     const password = signInData.get('pwd');
 
-    if (!userNameExists(users, name)) {
+    if (userNameExists(users, name)) {
         const newUser = makeUser(name, password);
         users.push(newUser);
         setUsers(users);
